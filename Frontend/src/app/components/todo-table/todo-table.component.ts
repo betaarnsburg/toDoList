@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {TodoService} from "../../services/todo.service";
+import {Router} from "@angular/router";
+import {Todo} from "../../models/todo";
+import {Observable} from "rxjs";
 
 /**
  * ... alle meine Todos und die Daten dieser als Tabelle anzeigen lassen
@@ -16,5 +20,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo-table.component.css']
 })
 export class TodoTableComponent {
+  todos: Todo[] = [];
+  constructor(private todoService: TodoService) {
+    this.todoService.findAll().subscribe(data => this.todos = data);
+  }
+  onDeleteTodo(id: number) {
+    this.todoService.deleteTodo(id).subscribe(
+      () => {
+        this.todos = this.todos.filter(todo => todo.id !== id);
+      }
+    )
+  }
+
 
 }
