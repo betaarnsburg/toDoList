@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {TodoDetailsComponent} from "./components/todo-details/todo-details.component";
 import {TodoFormComponent} from "./components/todo-form/todo-form.component";
 import {TodoTableComponent} from "./components/todo-table/todo-table.component";
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {TodoTableComponent} from "./components/todo-table/todo-table.component";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

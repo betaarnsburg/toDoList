@@ -1,1 +1,36 @@
-<p>todo-details works!</p>
+<div>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Titel</th>
+      <th>Beschreibung</th>
+      <th>Datum</th>
+      <th>Zustand</th>
+    </tr>
+    <tr *ngIf="detail">
+      <td>{{detail.id}}</td>
+      <div *ngIf="detail.completed else NotCompleted">
+        <s><td>{{detail.task}}</td></s>
+      </div>
+      <ng-template #NotCompleted>
+        <td>{{detail.task}}</td>
+      </ng-template>
+      <td>{{detail.details}}</td>
+      <td>{{detail.date}}</td>
+      <div *ngIf="detail.completed else NichtFertig">
+        <td>Fertig</td>
+      </div>
+      <ng-template #NichtFertig>Nicht Fertig</ng-template>
+      <td>
+        <button (click)="deleteTodo(detail.id!, $event)">Löschen</button>
+      </td>
+      <td>
+        <button [routerLink]="'/update/' + detail.id">Update</button>
+      </td>
+      <td>
+        <button (click)="onButtonCompleteClick()">Fertig</button>
+      </td>
+
+    </tr>
+  </table>
+</div>

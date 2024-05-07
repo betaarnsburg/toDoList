@@ -1,1 +1,16 @@
-<p>todo-form works!</p>
+<form [formGroup]="todoForm" (submit)="saveTodo()">
+  <label for="task">Titel: </label>
+  <input id="task" formControlName="task" type="text">
+  <br>
+  <label for="details">Beschreibung: </label>
+  <input id="details" formControlName="details" type="text">
+  <br>
+  <label for="date">Datum: </label>
+  <input id="date" formControlName="date" type="date">
+  <br>
+  <label for="completed">Zustand</label>
+  <input id="completed" type="radio" name="Fertig" value="true" formControlName="completed"> Fertig
+  <input type="radio" name="Fertig" value="false" checked="checked" formControlName="completed">Nicht fertig
+  <br>
+  <button type="submit" [disabled]="todoForm.invalid">Speichern</button>
+</form>
